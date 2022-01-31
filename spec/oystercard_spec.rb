@@ -14,5 +14,11 @@ describe Oystercard do
     it "Tops up the card and returns the new Balance" do
       expect { subject.top_up(5) }.to change { subject.balance }.by(5)
     end
+
+    it "Should fail, If Balance more than 90" do
+      limit = Oystercard::LIMIT
+      subject.top_up(limit)
+      expect { subject.top_up 1 }.to raise_error("Balance exceeded, Limit is #{limit}")
+    end  
   end
 end
