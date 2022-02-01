@@ -9,7 +9,11 @@ class Oystercard
     fail("Balance exceeded, Limit is #{LIMIT}") if @balance + recharge > LIMIT
     @balance += recharge
   end
+  
+  def deduct(fare)
+    @balance -= fare
 
+  end
 #   def balance # replaced by attr_reader
 #   @balance
 #   end
